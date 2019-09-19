@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { withFormik, Form, Field } from 'formik'; //1. import formik
 import * as yup from 'yup'; //2. import yup, 3. last is submit to API
 import axios from 'axios'
+import { keyToTestName } from 'jest-snapshot/build/utils';
 
 const UserForm = ({errors, touched, status})=> {//fix bug it does not show error all the time (add touched), just you forget
     console.log (status)
@@ -40,7 +41,7 @@ const UserForm = ({errors, touched, status})=> {//fix bug it does not show error
         // TermsofService {status.TermsofService} <br />
     }
         {users.map(user => (
-            <div>Name: {user.Name}</div>
+            <div key={user.Email}>Name: {user.Name}</div>
         ))}
     </Form>
     )
