@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from './Form.js'; //1. import form in app.js
-//import * as yup from 'yup'; //2. import yup
+
 
 import logo from './logo.svg';
 import './App.css';

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { withFormik, Form, Field } from 'formik'; //1. import formik
 import * as yup from 'yup'; //2. import yup, 3. last is submit to API
-import axios from 'axios'
+import axios from 'axios'//3. API request
 import { keyToTestName } from 'jest-snapshot/build/utils';
 
 const UserForm = ({errors, touched, status})=> {//fix bug it does not show error all the time (add touched), just you forget
@@ -34,12 +34,7 @@ const UserForm = ({errors, touched, status})=> {//fix bug it does not show error
 
         <button type ="submit">Submit</button>
 
-    {
-        // Name {status.Name} <br />
-        // Email {status.Email} <br />
-        // Password {status.Password} <br />
-        // TermsofService {status.TermsofService} <br />
-    }
+   
         {users.map(user => (
             <div key={user.Email}>Name: {user.Name}</div>
         ))}
@@ -56,7 +51,7 @@ export default withFormik({ //1 export formik, send the value to mapProps for fo
             TermsofService: values.TermsofService || false
         }
     },
-    validationSchema: yup.object().shape ({
+    validationSchema: yup.object().shape ({//2. implement form validation
         Name: yup.string().required("Name is required!"),
         Email: yup.string().required("Email is required!"),
         Password: yup.string().required("Password is required!"),
